@@ -16,16 +16,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserController {
 
-	private static Logger log = LoggerFactory.getLogger(UserController.class);
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-	@Autowired
-	private UserRepository userRepository;
+	private final UserRepository userRepository;
+	private final CartRepository cartRepository;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@Autowired
-	private CartRepository cartRepository;
-
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	public UserController(UserRepository userRepository, CartRepository cartRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
+		this.userRepository = userRepository;
+		this.cartRepository = cartRepository;
+		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+	}
 
 	@GetMapping("/id/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id) {
@@ -47,12 +48,14 @@ public class UserController {
 		user.setCart(cart);
 		if(createUserRequest.getPassword().length()<7 ||
 				!createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())){
-			log.info("Error - Either length is less than 7 or pass and conf pass do not match. Unable to create {}",
+			log.error("Error - Either length is less than 7 or pass and conf pass do not match. Unable to create {}",
 					createUserRequest.getUsername());
 			return ResponseEntity.badRequest().build();
 		}
 		user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
 		userRepository.save(user);
+		log.info("Successfully created user {}",
+				createUserRequest.getUsername());
 		return ResponseEntity.ok(user);
 	}
 
