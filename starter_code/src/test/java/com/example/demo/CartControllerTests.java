@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static com.example.demo.Utils.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertEquals;
@@ -38,44 +39,10 @@ public class CartControllerTests {
     private static final CartRepository cartRepository = mock(CartRepository.class);
     private static final UserRepository userRepository = mock(UserRepository.class);
 
-    private static User createUser() {
-        User user = new User();
-        user.setId(1L);
-        user.setUsername("user");
-        user.setPassword("pass");
-        return user;
-    }
-
-    private static Cart createCart() {
-        Cart cart = new Cart();
-        cart.setId(1L);
-        return cart;
-    }
-
-    private static Item createItem(Long id) {
-        Item item = new Item();
-        item.setId(id);
-        item.setDescription("desc" + id.toString());
-        item.setName("name" + id.toString());
-        item.setPrice(new BigDecimal(pricePerItem));
-        return item;
-    }
-
-    private static ModifyCartRequest createModifyCartRequest() {
-        ModifyCartRequest modifyCartRequest = new ModifyCartRequest();
-        modifyCartRequest.setUsername("user");
-        modifyCartRequest.setItemId(1L);
-        modifyCartRequest.setQuantity(2);
-        return modifyCartRequest;
-    }
-
     @BeforeAll
     static void beforeAll() {
         cartController = new CartController(userRepository, cartRepository, itemRepository);
     }
-
-    private static final int numberOfItems = 5;
-    private static final int pricePerItem = 1;
 
     @BeforeEach
     void beforeEach() {
