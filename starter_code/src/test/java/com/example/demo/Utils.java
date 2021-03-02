@@ -6,6 +6,8 @@ import com.example.demo.model.persistence.User;
 import com.example.demo.model.requests.ModifyCartRequest;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Utils {
 
@@ -33,6 +35,14 @@ public class Utils {
         item.setName("name" + id.toString());
         item.setPrice(new BigDecimal(pricePerItem));
         return item;
+    }
+
+    public static List<Item> createItemList() {
+        List<Item> items = new ArrayList<>();
+        for (long i = 1L; i <= numberOfItems; i++) {
+            items.add(createItem(i));
+        }
+        return items;
     }
 
     public static ModifyCartRequest createModifyCartRequest() {
