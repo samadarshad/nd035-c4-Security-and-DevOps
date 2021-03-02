@@ -9,10 +9,12 @@ import com.example.demo.model.persistence.repositories.ItemRepository;
 import com.example.demo.model.persistence.repositories.UserRepository;
 import com.example.demo.model.requests.ModifyCartRequest;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
+@Transactional
 public class CartControllerTests {
 
     private static CartController cartController;
@@ -66,11 +69,16 @@ public class CartControllerTests {
         return modifyCartRequest;
     }
 
+    @BeforeAll
+    static void beforeAll() {
+        cartController = new CartController(userRepository, cartRepository, itemRepository);
+    }
+
     private static final int numberOfItems = 5;
     private static final int pricePerItem = 1;
 
-    @BeforeAll
-    static void beforeAll() {
+    @BeforeEach
+    void beforeEach() {
         User user = createUser();
         Cart cart = createCart();
         for (long i = 1L; i <= numberOfItems; i++) {
@@ -83,8 +91,6 @@ public class CartControllerTests {
         when(userRepository.findByUsername("user")).thenReturn(user);
         when(itemRepository.findById(1L)).thenReturn(Optional.of(createItem(1L)));
         when(cartRepository.findByUser(any())).thenReturn(cart);
-
-        cartController = new CartController(userRepository, cartRepository, itemRepository);
     }
 
     @Test
@@ -96,7 +102,22 @@ public class CartControllerTests {
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
 
         Cart cart = response.getBody();
+        assertNotNull(cart);
         BigDecimal expectedTotal = new BigDecimal((numberOfItems + request.getQuantity()) * pricePerItem);
+        assertEquals(expectedTotal, cart.getTotal());
+    }
+
+    @Test
+    public void removeFromCart() {
+        ModifyCartRequest request = createModifyCartRequest();
+        request.setQuantity(3);
+
+        ResponseEntity<Cart> response = cartController.removeFromcart(request);
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+
+        Cart cart = response.getBody();
+        assertNotNull(cart);
+        BigDecimal expectedTotal = new BigDecimal((numberOfItems - request.getQuantity()) * pricePerItem);
         assertEquals(expectedTotal, cart.getTotal());
     }
 }
