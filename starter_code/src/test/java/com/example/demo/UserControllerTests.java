@@ -49,6 +49,8 @@ public class UserControllerTests {
         User user = Utils.createUser();
 
         when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userRepository.findByUsername("user")).thenReturn(user);
+        when(userRepository.findByUsername("no_user")).thenReturn(null);
         when(bCryptPasswordEncoder.encode(any())).thenReturn("encoded");
     }
 
@@ -80,6 +82,38 @@ public class UserControllerTests {
         assertNull(user);
     }
 
+    @Test
+    void findById() {
+        ResponseEntity<User> response = userController.findById(1L);
 
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+
+        User user = response.getBody();
+        assertNotNull(user);
+        assertEquals("user", user.getUsername());
+        assertEquals("pass", user.getPassword());
+    }
+
+    @Test
+    void findByUserName_positive() {
+        ResponseEntity<User> response = userController.findByUserName("user");
+
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+
+        User user = response.getBody();
+        assertNotNull(user);
+        assertEquals("user", user.getUsername());
+        assertEquals("pass", user.getPassword());
+    }
+
+    @Test
+    void findByUserName_negative() {
+        ResponseEntity<User> response = userController.findByUserName("no_user");
+
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.NOT_FOUND));
+
+        User user = response.getBody();
+        assertNull(user);
+    }
 
 }
