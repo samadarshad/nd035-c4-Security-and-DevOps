@@ -4,6 +4,7 @@ import com.example.demo.model.persistence.Cart;
 import com.example.demo.model.persistence.Item;
 import com.example.demo.model.persistence.User;
 import com.example.demo.model.persistence.UserOrder;
+import com.example.demo.model.requests.CreateUserRequest;
 import com.example.demo.model.requests.ModifyCartRequest;
 
 import java.math.BigDecimal;
@@ -72,5 +73,13 @@ public class Utils {
             userOrders.add(order);
         }
         return userOrders;
+    }
+
+    public static CreateUserRequest createCreateUserRequest() {
+        CreateUserRequest request = new CreateUserRequest();
+        request.setUsername("user");
+        request.setPassword("pass");
+        request.setConfirmPassword("pass");
+        return request;
     }
 }
