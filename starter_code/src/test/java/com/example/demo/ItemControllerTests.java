@@ -40,7 +40,8 @@ public class ItemControllerTests {
     void beforeEach() {
         when(itemRepository.findById(1L)).thenReturn(Optional.of(createItem(1L)));
         when(itemRepository.findAll()).thenReturn(createItemList());
-        when(itemRepository.findByName(any())).thenReturn(createItemList());
+        when(itemRepository.findByName("positive")).thenReturn(createItemList());
+        when(itemRepository.findByName("negative")).thenReturn(null);
     }
 
     @Test
@@ -58,6 +59,48 @@ public class ItemControllerTests {
             assertEquals(expectedItems.get(i).getName(), items.get(i).getName());
             assertEquals(expectedItems.get(i).getPrice(), items.get(i).getPrice());
         }
+    }
+
+    @Test
+    void getItemById() {
+        ResponseEntity<Item> response = itemController.getItemById(1L);
+
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+
+        Item item = response.getBody();
+        assertNotNull(item);
+        Item expectedItem = createItem(1L);
+        assertEquals(expectedItem.getId(), item.getId());
+        assertEquals(expectedItem.getDescription(), item.getDescription());
+        assertEquals(expectedItem.getName(), item.getName());
+        assertEquals(expectedItem.getPrice(), item.getPrice());
+    }
+
+    @Test
+    void getItemsByName_positive() {
+        ResponseEntity<List<Item>> response = itemController.getItemsByName("positive");
+
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+
+        List<Item> items = response.getBody();
+        assertNotNull(items);
+        List<Item> expectedItems = createItemList();
+        for (int i = 0; i < numberOfItems; i++) {
+            assertEquals(expectedItems.get(i).getId(), items.get(i).getId());
+            assertEquals(expectedItems.get(i).getDescription(), items.get(i).getDescription());
+            assertEquals(expectedItems.get(i).getName(), items.get(i).getName());
+            assertEquals(expectedItems.get(i).getPrice(), items.get(i).getPrice());
+        }
+    }
+
+    @Test
+    void getItemsByName_negative() {
+        ResponseEntity<List<Item>> response = itemController.getItemsByName("negative");
+
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.NOT_FOUND));
+
+        List<Item> items = response.getBody();
+        assertNull(items);
     }
 
 }
