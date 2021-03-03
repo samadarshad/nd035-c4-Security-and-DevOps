@@ -81,7 +81,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\t\"username\" : \"user\",\r\n\t\"password\" : \"password\"\r\n}",
+					"raw": "{\r\n\t\"username\" : \"user\",\r\n\t\"password\" : \"wrong_pass\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -223,6 +223,28 @@
 						"order",
 						"submit",
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/order submit_negative",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/order/submit/no_user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order",
+						"submit",
+						"no_user"
 					]
 				}
 			},

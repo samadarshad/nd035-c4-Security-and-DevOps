@@ -1,0 +1,57 @@
+2021-03-03 01:35:43.864  INFO 4776 --- [           main] com.example.demo.SareetaApplication      : Starting SareetaApplication using Java 15.0.2 on ABDUS-SAMAD with PID 4776 (C:\dev\nd035-c4-Security-and-DevOps\starter_code\target\classes started by Samad Arshad in C:\dev\nd035-c4-Security-and-DevOps\starter_code)
+2021-03-03 01:35:43.866  INFO 4776 --- [           main] com.example.demo.SareetaApplication      : No active profile set, falling back to default profiles: default
+2021-03-03 01:35:44.466  INFO 4776 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-03-03 01:35:44.525  INFO 4776 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 4 JPA repository interfaces.
+2021-03-03 01:35:45.105  INFO 4776 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-03-03 01:35:45.114  INFO 4776 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-03-03 01:35:45.114  INFO 4776 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-03-03 01:35:45.254  INFO 4776 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-03-03 01:35:45.254  INFO 4776 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1330 ms
+2021-03-03 01:35:45.416  INFO 4776 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-03-03 01:35:45.458  INFO 4776 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-03-03 01:35:45.561  INFO 4776 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-03-03 01:35:45.641  INFO 4776 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-03-03 01:35:45.723  INFO 4776 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-03-03 01:35:45.735  INFO 4776 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-03-03 01:35:46.349  INFO 4776 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-03-03 01:35:46.356  INFO 4776 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-03-03 01:35:46.674  WARN 4776 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-03-03 01:35:47.093  INFO 4776 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42536da6, org.springframework.security.web.context.SecurityContextPersistenceFilter@2a73a64f, org.springframework.security.web.header.HeaderWriterFilter@2d5c160e, org.springframework.web.filter.CorsFilter@7591cbd1, org.springframework.security.web.authentication.logout.LogoutFilter@1bbb48dd, com.example.demo.security.JWTAuthenticationFilter@5cdc8499, com.example.demo.security.JWTAuthenticationVerificationFilter@2a30b0cb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2419a5db, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3dec769, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@73d7d676, org.springframework.security.web.session.SessionManagementFilter@4e02f17d, org.springframework.security.web.access.ExceptionTranslationFilter@4b2acb12, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d67348a]
+2021-03-03 01:35:47.134  INFO 4776 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-03-03 01:35:47.270  INFO 4776 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-03-03 01:35:47.280  INFO 4776 --- [           main] com.example.demo.SareetaApplication      : Started SareetaApplication in 3.923 seconds (JVM running for 4.756)
+2021-03-03 01:35:47.954  INFO 4776 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-03-03 01:35:47.954  INFO 4776 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-03-03 01:35:47.955  INFO 4776 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-03-03 01:39:21.710 ERROR 4776 --- [nio-8080-exec-6] c.e.demo.controllers.UserController      : Error - Either length is less than 7 or pass and conf pass do not match. Unable to create random
+2021-03-03 01:39:55.124 ERROR 4776 --- [nio-8080-exec-8] c.e.demo.controllers.UserController      : Error - Either length is less than 7 or pass and conf pass do not match. Unable to create user
+2021-03-03 01:40:01.843  INFO 4776 --- [io-8080-exec-10] c.e.demo.controllers.UserController      : Successfully created user user
+2021-03-03 01:41:04.162  INFO 4776 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : Added item 1 quantity 2 to user 1 cart 3
+2021-03-03 01:41:07.441  INFO 4776 --- [nio-8080-exec-6] c.e.demo.controllers.UserController      : Order submission successful with id: 1
+2021-03-03 01:41:10.524  INFO 4776 --- [nio-8080-exec-7] c.e.demo.controllers.UserController      : Order getOrdersForUser successful with user: user
+2021-03-03 01:51:16.612 ERROR 4776 --- [io-8080-exec-10] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:51:24.088  INFO 4776 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : Order submission successful with id: 2
+2021-03-03 01:51:27.739  INFO 4776 --- [nio-8080-exec-2] c.e.demo.controllers.UserController      : Order submission successful with id: 3
+2021-03-03 01:51:28.733  INFO 4776 --- [nio-8080-exec-4] c.e.demo.controllers.UserController      : Order submission successful with id: 4
+2021-03-03 01:51:31.376 ERROR 4776 --- [nio-8080-exec-3] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:51:32.016 ERROR 4776 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:51:37.495  INFO 4776 --- [nio-8080-exec-6] c.e.demo.controllers.UserController      : Added item 1 quantity 2 to user 1 cart 3
+2021-03-03 01:51:39.192  INFO 4776 --- [nio-8080-exec-7] c.e.demo.controllers.UserController      : Added item 1 quantity 2 to user 1 cart 3
+2021-03-03 01:51:41.677  INFO 4776 --- [nio-8080-exec-8] c.e.demo.controllers.UserController      : Added item 1 quantity 2 to user 1 cart 3
+2021-03-03 01:51:42.122  INFO 4776 --- [nio-8080-exec-9] c.e.demo.controllers.UserController      : Added item 1 quantity 2 to user 1 cart 3
+2021-03-03 01:51:44.336  INFO 4776 --- [io-8080-exec-10] c.e.demo.controllers.UserController      : Order submission successful with id: 5
+2021-03-03 01:51:47.682 ERROR 4776 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:51:48.401 ERROR 4776 --- [nio-8080-exec-2] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:51:49.064 ERROR 4776 --- [nio-8080-exec-4] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:51:51.439  INFO 4776 --- [nio-8080-exec-3] c.e.demo.controllers.UserController      : Order submission successful with id: 6
+2021-03-03 01:51:52.234  INFO 4776 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : Order submission successful with id: 7
+2021-03-03 01:52:00.855 ERROR 4776 --- [nio-8080-exec-7] c.e.demo.controllers.UserController      : Error - Either length is less than 7 or pass and conf pass do not match. Unable to create user
+2021-03-03 01:52:03.157 ERROR 4776 --- [nio-8080-exec-9] c.e.demo.controllers.UserController      : Error - Either length is less than 7 or pass and conf pass do not match. Unable to create user
+2021-03-03 01:52:04.221 ERROR 4776 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : Error - Either length is less than 7 or pass and conf pass do not match. Unable to create user
+2021-03-03 01:52:45.768  INFO 4776 --- [nio-8080-exec-8] c.e.demo.controllers.UserController      : Added item 1 quantity 2 to user 1 cart 3
+2021-03-03 01:52:51.220  INFO 4776 --- [nio-8080-exec-9] c.e.demo.controllers.UserController      : Order submission successful with id: 8
+2021-03-03 01:52:51.583  INFO 4776 --- [io-8080-exec-10] c.e.demo.controllers.UserController      : Order submission successful with id: 9
+2021-03-03 01:52:52.141  INFO 4776 --- [nio-8080-exec-1] c.e.demo.controllers.UserController      : Order submission successful with id: 10
+2021-03-03 01:52:54.398 ERROR 4776 --- [nio-8080-exec-2] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:52:55.723 ERROR 4776 --- [nio-8080-exec-4] c.e.demo.controllers.UserController      : Order submit failed. Cannot find user no_user
+2021-03-03 01:52:58.709  INFO 4776 --- [nio-8080-exec-3] c.e.demo.controllers.UserController      : Order getOrdersForUser successful with user: user

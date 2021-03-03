@@ -1,6 +1,27 @@
 ## Splunk
 
+### Generating logs using Postman and uploading to Splunk
 
+### Searching Splunk
+Searching for "error"
+`source="logs.txt" host="ABDUS-SAMAD" sourcetype="Postman tests" error`
+![searching for error](res\splunk\search_error.PNG)
+
+Searching for "order submit failed"
+`source="logs.txt" host="ABDUS-SAMAD" sourcetype="Postman tests" order submit failed`
+![searching for order submit failed](res\splunk\search_order_fail.PNG)
+
+### Setting up alert when order submit failed
+Whenever an "order fail" event occurs in the log, an alert will be triggered.
+I had re-uploaded the logs to trigger any alerts.
+Here we can see the order-fail alert is set up:
+![setup order fail alert](res\splunk\alert_order_fail.PNG)
+
+Then clicking into this alert, we can view 2 alerts had occurred at 2 times:
+![setup order fail alert list](res\splunk\alert_order_fail_list.PNG)
+
+Selecting one of the items we can see its details, showing the "order fail" logs:
+![setup order fail alert list details](res\splunk\alert_order_fail_details_of_first_alert_item.PNG)
 
 ## Jenkins Pipeline
 
