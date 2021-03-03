@@ -1,6 +1,13 @@
-## Splunk
+# Splunk
 
 ### Generating logs using Postman and uploading to Splunk
+There are postman tests for the api, which can be used to generate fake user data.
+![postman](res\splunk\postman.PNG)
+
+These cause console log outputs on the running server.
+![postman_output](res\splunk\postman_output.PNG)
+
+These logs can now be imported into Splunk.
 
 ### Searching Splunk
 Searching for "error"
@@ -23,7 +30,15 @@ Then clicking into this alert, we can view 2 alerts had occurred at 2 times:
 Selecting one of the items we can see its details, showing the "order fail" logs:
 ![setup order fail alert list details](res\splunk\alert_order_fail_details_of_first_alert_item.PNG)
 
-## Jenkins Pipeline
+### Adding a dashboard for number of successful orders
+Setting the search term for successful orders, assembled into time series:
+`source="logs.txt" host="ABDUS-SAMAD" sourcetype="Postman tests" order submission successful | timechart count`
+![dashboard_searchterm](res\splunk\dashboard_searchterm.PNG)
+
+This can now be visualised in a dashboard on a time chart - the x-axis is time, y-axis is the count of "order successful" events.
+![dashboard_output](res\splunk\dashboard_output.PNG)
+
+# Jenkins Pipeline
 
 ### Setting up the project
 To trigger whenever the github master branch is updated.
