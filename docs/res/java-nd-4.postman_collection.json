@@ -41,6 +41,9 @@
 		{
 			"name": "Unauthorized_Login",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -145,12 +148,12 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8089/api/order/submit/user",
+					"raw": "http://localhost:8080/api/order/submit/user",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8089",
+					"port": "8080",
 					"path": [
 						"api",
 						"order",
